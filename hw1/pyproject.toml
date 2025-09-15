@@ -1,0 +1,10 @@
+[project]
+name = "mlzoomcamp"
+version = "0.1"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ipython>=9.5.0",
+    "pandas>=2.3.2",
+]
