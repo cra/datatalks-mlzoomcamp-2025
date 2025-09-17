@@ -1,6 +1,8 @@
-.PHONY: help q1
+.PHONY: help q1 q2 q3 q4 q5 q6 q7 py-interactive get-data
 
 PY=uv run python -c
+CSV=car_fuel_efficiency.csv
+SRC=https://raw.githubusercontent.com/alexeygrigorev/datasets/master/$(CSV)
 
 help: ## Show this help message
 	@echo "Available commands:"
@@ -9,35 +11,37 @@ help: ## Show this help message
 q1: ## pandas version
 	${PY} 'import pandas as pd; print(pd.__version__)'
 
-get-data:  ## download laptopts price dataset
-	wget https://raw.githubusercontent.com/alexeygrigorev/datasets/master/laptops.csv
+get-data: $(CSV) ## download csv dataset if not present
 
-py-interactive:
-	uv run ipython -i -c 'import pandas as pd; df = pd.read_csv("laptops.csv");'
+$(CSV):
+	wget $(SRC)
 
-q2: ## records count
+py-interactive: $(CSV)  ## run python repl with csv as df
+	uv run ipython -i -c 'import pandas as pd; df = pd.read_csv("$(CSV)"); print(df.columns)'
+
+q2: $(CSV) ## records count
 	@echo "Can use wc, but don't forget the header:"
-	wc -l laptops.csv
+	wc -l $(CSV)
 	@echo "Pandas way:"
-	${PY} 'import pandas as pd; df = pd.read_csv("laptops.csv"); print(len(df))'
+	${PY} 'import pandas as pd; df = pd.read_csv("$(CSV)"); print(len(df))'
 
-q3: ## laptop brands
-	${PY} 'import pandas as pd; df = pd.read_csv("laptops.csv"); print(len(df["Brand"].value_counts().index))'
+q3: $(CSV) ## fuel types
+	${PY} 'import pandas as pd; df = pd.read_csv("$(CSV)"); print(df["fuel_type"].value_counts().shape)'
 
-q4: ## missing values
-	${PY} 'import pandas as pd; df = pd.read_csv("laptops.csv"); print(sum(df.isnull().any()))'
+q4: $(CSV) ## missing values
+	${PY} 'import pandas as pd; df = pd.read_csv("$(CSV)"); print(sum(df.isnull().any()))'
 
-q5: ## maximum final price
-	${PY} 'import pandas as pd; df = pd.read_csv("laptops.csv"); print(df[df["Brand"] == "Dell"]["Final Price"].max())'
+q5: $(CSV) ## maximum fuel efficiency of asian cars
+	${PY} 'import pandas as pd; df = pd.read_csv("$(CSV)"); print(df[df["origin"] == "Asia"]["fuel_efficiency_mpg"].max())'
 
 
-q6: ## median value of screen
-	@echo "Median before fillna"
-	${PY} 'import pandas as pd; df = pd.read_csv("laptops.csv"); print(df["Screen"].median(skipna=True))'
-	@echo "Most frequent before fillna"
-	${PY} 'import pandas as pd; df = pd.read_csv("laptops.csv"); print(df["Screen"].mode())'
-	@echo "Most frequent after fillna with most freq"
-	${PY} 'import pandas as pd; df = pd.read_csv("laptops.csv"); print(df["Screen"].fillna(df["Screen"].mode()).median())'
+q6: $(CSV) ## median value of horsepower
+	@echo "== Median before fillna"
+	${PY} 'import pandas as pd; df = pd.read_csv("$(CSV)"); print(df["horsepower"].median())'
+	@echo "== Most frequent before fillna"
+	${PY} 'import pandas as pd; df = pd.read_csv("$(CSV)"); print(df["horsepower"].mode())'
+	@echo "== Most frequent after fillna with most freq"
+	${PY} 'import pandas as pd; df = pd.read_csv("$(CSV)"); print(df["horsepower"].fillna(df["horsepower"].mode()).median())'
 
-q7: ## sum of weights
-	uv run python q7.py
+q7: $(CSV) ## sum of weights
+	uv run python q7.py $(CSV)
