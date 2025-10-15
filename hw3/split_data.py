@@ -16,6 +16,18 @@ def main():
     df = pd.read_csv(args.csv_file)
     tot_lines = len(df)
 
+    # Handle missing values according to homework instructions
+    categorical_features = ["industry", "location", "lead_source", "employment_status"]
+
+    # For categorical features, replace with 'NA'
+    for cat in categorical_features:
+        if cat in df.columns:
+            df[cat] = df[cat].fillna('NA')
+
+    # For numerical features, replace with 0.0
+    numerical_features = [col for col in df.columns if col not in categorical_features and col != args.target]
+    df[numerical_features] = df[numerical_features].fillna(0.0)
+
     y = df[args.target]
     X = df.drop(columns=[args.target])
 

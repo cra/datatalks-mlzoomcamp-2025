@@ -36,3 +36,6 @@ clean:
 q3: $(TRAIN_CSV) ## compute mutual information
 	${PY} q3.py $(TRAIN_CSV) --target $(TARGET)
 
+
+q4: $(TRAIN_CSV) $(VAL_CSV) ## train logreg and check accuracy
+	${PY} q4.py --train $(TRAIN_CSV) --val $(VAL_CSV) --target $(TARGET) --seed 42
