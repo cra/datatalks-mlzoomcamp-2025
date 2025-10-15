@@ -42,3 +42,6 @@ q4: $(TRAIN_CSV) $(VAL_CSV) ## train logreg and check accuracy
 
 q5: $(TRAIN_CSV) $(VAL_CSV) ## feature elimination analysis
 	${PY} q5.py --train $(TRAIN_CSV) --val $(VAL_CSV) --target $(TARGET) --seed $(SEED)
+
+q6: $(TRAIN_CSV) $(VAL_CSV) ## regularization parameter tuning
+	${PY} q6.py --train $(TRAIN_CSV) --val $(VAL_CSV) --target $(TARGET) --seed $(SEED)
