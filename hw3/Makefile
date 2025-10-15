@@ -39,3 +39,6 @@ q3: $(TRAIN_CSV) ## compute mutual information
 
 q4: $(TRAIN_CSV) $(VAL_CSV) ## train logreg and check accuracy
 	${PY} q4.py --train $(TRAIN_CSV) --val $(VAL_CSV) --target $(TARGET) --seed 42
+
+q5: $(TRAIN_CSV) $(VAL_CSV) ## feature elimination analysis
+	${PY} q5.py --train $(TRAIN_CSV) --val $(VAL_CSV) --target $(TARGET) --seed $(SEED)
