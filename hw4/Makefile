@@ -35,3 +35,9 @@ q3: $(TRAIN_CSV) $(VAL_CSV) ## precision and recall
 
 q4: $(TRAIN_CSV) $(VAL_CSV) ## F1 score
 	${PY} q2q3q4.py --q4 --train $(TRAIN_CSV) --val $(VAL_CSV)
+
+q5: $(CSV) ## 5-Fold cross-validation
+	${PY} q5q6.py --q5 --csv $(CSV) --seed $(SEED) --target $(TARGET)
+
+q6: $(CSV) ## Hyperparameter tuning
+	${PY} q5q6.py --q6 --csv $(CSV) --seed $(SEED) --target $(TARGET)

@@ -86,7 +86,7 @@ def main():
         debug(X_train, X_val, v)
 
     # model = LogisticRegression(solver="liblinear", C=1.0, max_iter=1000)
-    model = LogisticRegression(solver="lbfgs", C=1.0, max_iter=1000)
+    model = LogisticRegression(solver="lbfgs", C=1.0, max_iter=10_000)
     model.fit(X_train, y_train)
 
     if args.q2:
