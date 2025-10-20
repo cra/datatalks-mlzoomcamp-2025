@@ -28,4 +28,10 @@ q1: $(TRAIN_CSV) ## ROC AUC feature importance
 	${PY} q1.py --train $(TRAIN_CSV)
 
 q2: $(TRAIN_CSV) $(VAL_CSV) ## AUC score of basic logistic regression
-	${PY} q2.py --train $(TRAIN_CSV) --val $(VAL_CSV)
+	${PY} q2q3q4.py --q2 --train $(TRAIN_CSV) --val $(VAL_CSV)
+
+q3: $(TRAIN_CSV) $(VAL_CSV) ## precision and recall
+	${PY} q2q3q4.py --q3 --train $(TRAIN_CSV) --val $(VAL_CSV)
+
+q4: $(TRAIN_CSV) $(VAL_CSV) ## F1 score
+	${PY} q2q3q4.py --q4 --train $(TRAIN_CSV) --val $(VAL_CSV)
