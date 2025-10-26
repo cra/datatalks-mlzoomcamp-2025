@@ -47,3 +47,7 @@ one is 100->60/40 (test=40%) and then 40->20/20 (test=50%)
 the other is 100->80/20 (test=20%) and then 80->60/20 (test=25%). The split order gives different result, I found the latter being closer to the answers in the homework.
 
 **I was not able to get answers for Q2 and Q3 with liblinear** so I switched to `lbfgs` solver. Then I was spot on for Q2 and Q3
+
+## hw5: [deploying](https://github.com/DataTalksClub/machine-learning-zoomcamp/blob/master/cohorts/2025/05-deployment/homework.md)
+
+[code](./hw5)

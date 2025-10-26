@@ -1,0 +1,15 @@
+[language-server.pyright]
+command = "uv"
+args = ["run", "pyright-langserver", "--stdio"]  
+
+[language-server.ruff.config.settings.lint]
+ignore = [
+  "D100",    # missing docstring in public module
+  "D101",    # missing docstring in public class
+  "D103",    # missing docstring in public function
+  "DOC201",  # return not documented
+  # "S105",    # possible hardcoded password
+  "RUF001",  # string contains ambiguous cyrillic char
+  "RUF002",  # string contains ambiguous cyrillic char эс
+]
+
