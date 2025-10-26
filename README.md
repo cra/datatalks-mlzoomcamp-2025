@@ -19,6 +19,8 @@ DNF
 
 ## hw3: [classification](https://github.com/DataTalksClub/machine-learning-zoomcamp/blob/master/cohorts/2025/03-classification/homework.md)
 
+[code](./hw3)
+
 ```bash
 cd hw3
 make help
@@ -36,7 +38,9 @@ Q6 yields same values for linear solver and suggested values of C. Weird? Weird.
 
 ## hw4: [evaluation](https://github.com/DataTalksClub/machine-learning-zoomcamp/blob/master/cohorts/2025/04-evaluation/homework.md)
 
-Pands sucks! I spend a lot of time dealing with "NA" getting treated as nulls in my scripts on `pd.read_csv()` calls. So I use string `MISSING` instead, since it does not matter for `DictVectorizer` (initial dataset has no exact "NA" values in the data)
+[code](./hw4)
+
+Pandas sucks! I spend a lot of time dealing with "NA" getting treated as nulls in my scripts on `pd.read_csv()` calls. So I use string `MISSING` instead, since it does not matter for `DictVectorizer` (initial dataset has no exact "NA" values in the data)
 
 Also, there are two ways to do 60/20/20 split
 one is 100->60/40 (test=40%) and then 40->20/20 (test=50%)
