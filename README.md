@@ -51,3 +51,8 @@ the other is 100->80/20 (test=20%) and then 80->60/20 (test=25%). The split orde
 ## hw5: [deploying](https://github.com/DataTalksClub/machine-learning-zoomcamp/blob/master/cohorts/2025/05-deployment/homework.md)
 
 [code](./hw5)
+
+## hw6: [decision trees](https://github.com/DataTalksClub/machine-learning-zoomcamp/blob/master/cohorts/2025/06-trees/homework.md)
+
+[code](./hw6)
+
